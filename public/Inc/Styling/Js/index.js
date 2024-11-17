@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
         let seconds = Math.floor((dateDifference % (1000 * 60)) / 1000);
         console.log(days);
         container.innerHTML = `
-    <p><span>${days}</span><br>Days</p>
-    <p><span>${hours}</span><br>Hours</p>
-    <p><span>${minutes}</span><br>Minutes</p>
-    <p><span>${seconds}</span><br>Seconds</p>`;
+    <p><span>${days}</span><br>Dage</p>
+    <p><span>${hours}</span><br>Timer</p>
+    <p><span>${minutes}</span><br>Minutter</p>
+    <p><span>${seconds}</span><br>Sekunder</p>`;
     }, 1000);
 });
