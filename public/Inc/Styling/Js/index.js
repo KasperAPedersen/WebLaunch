@@ -15,7 +15,6 @@ let updateCountdown = () => {
     let hours =  Math.floor((dateDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     let minutes = Math.floor((dateDifference % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((dateDifference % (1000 * 60)) / 1000);
-    console.log(days);
     container.innerHTML = `
         <p><span>${days}</span><br>Dage</p>
         <p><span>${hours}</span><br>Timer</p>
