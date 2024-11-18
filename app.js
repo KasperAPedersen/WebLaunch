@@ -1,7 +1,6 @@
-const usePort = 443;
-
 import Express from 'npm:express';
 import * as https from 'node:https';
+import * as http from 'node:http';
 import * as fs from 'node:fs';
 
 const app = new Express();
@@ -14,14 +13,21 @@ const options = {
 app.enable('trust proxy');
 
 app.use((req, res, next) => {
-    if (process.env.NODE_ENV === 'production' && !req.secure) {
-        return res.redirect('https://' + req.headers.host + req.url);
-    }
-    next();
+  if (req.protocol === 'http') {
+    return res.redirect(301, `https://${req.headers.host}${req.url}`);
+  }
+  next();
 });
 
-app.use(Express.static('Public'));
+app.use(Express.static('public'));
 
-https.createServer(options, app).listen(usePort, () => {
-    console.log('HTTPS server running on port ' + usePort);
+https.createServer(options, app).listen(443, () => {
+    console.log('HTTPS server running on port 443');
+});
+
+http.createServer(function(req, res) {
+  res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+  res.end();
+}).listen(80, function(err) {
+  console.log("Node.js Express HTTPS Server Listening on Port 80");
 });
