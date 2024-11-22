@@ -1,0 +1,12 @@
+{
+  "name": "weblaunch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "deno run --allow-all app.js"
+  },
+  "author": "KasperAPedersen",
+  "license": "ISC"
+}
